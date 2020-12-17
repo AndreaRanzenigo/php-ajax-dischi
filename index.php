@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>php-ajax-dischi</title>
+    <!-- Main css -->
+    <link rel="stylesheet" href="./dist/css/style.css">
 </head>
 <body>
 
@@ -12,7 +14,7 @@
 
         <!-- Header -->
         <header>
-   
+            <img src="./img/logo.png" alt="logo">
         </header>
 
         <?php 
