@@ -39,7 +39,7 @@
                 <!-- Filter -->
                 <div class="filter">
                     <label for="filter-author">Filter for author:</label>
-                    <select id="filter-author" @change='setAuthor'>
+                    <select v-model='key' id="filter-author" @change='setAuthor'>
                         <option value="all">All</option>
                         <option v-for="disc in discs" :value="`${disc.author}`">
                             {{disc.author}}

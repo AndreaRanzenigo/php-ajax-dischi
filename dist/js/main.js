@@ -14424,7 +14424,8 @@ __webpack_require__.r(__webpack_exports__);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   data: {
-    discs: []
+    discs: [],
+    key: ''
   },
   created: function created() {
     var _this = this;
@@ -14437,20 +14438,35 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       // handle error
       console.log(error);
     });
+    console.log(this.key);
   },
   methods: {
-    setAuthor: function setAuthor() {
+    setAuthor: function setAuthor(value) {
       var _this2 = this;
 
-      if (this.discs.includes) axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost/boolean-php/php-ajax-dischi/script/filter-author.php').then(function (response) {
-        // handle success
-        //console.log(response);
-        _this2.discs = [];
-        _this2.discs = response.data;
-      })["catch"](function (error) {
-        // handle error
-        console.log(error);
-      });
+      if (this.key === 'all') {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost/boolean-php/php-ajax-dischi/script/json-database.php').then(function (response) {
+          // handle success
+          //console.log(response);
+          _this2.discs = [];
+          _this2.discs = response.data;
+          console.log(value);
+        })["catch"](function (error) {
+          // handle error
+          console.log(error);
+        });
+      } else if (this.key === 'Bon Jovi') {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost/boolean-php/php-ajax-dischi/script/filter-author.php').then(function (response) {
+          // handle success
+          //console.log(response);
+          _this2.discs = [];
+          _this2.discs = response.data;
+          console.log(value);
+        })["catch"](function (error) {
+          // handle error
+          console.log(error);
+        });
+      }
     }
   }
 });
