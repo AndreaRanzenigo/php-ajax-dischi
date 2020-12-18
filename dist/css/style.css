@@ -28,6 +28,24 @@ main {
   margin-top: 80px;
 }
 
+main .filter {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+main .filter label {
+  color: #fff;
+  font-weight: 700;
+}
+
+main #filter-author {
+  padding: 5px;
+  margin: 20px;
+  text-align: center;
+}
+
 main .container {
   width: 1170px;
   margin: auto;

@@ -6,14 +6,14 @@
     <title>php-ajax-dischi</title>
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./ico/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="./ico/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./ico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="./ico/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./ico/favicon-16x16.png">
-    <link rel="manifest" href="./ico/manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="./ico/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="./favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Main css -->
@@ -29,11 +29,24 @@
                 <img src="./img/logo.png" alt="logo">
             </header>
 
+
             <?php 
             require __DIR__ . '/partials/discs.php';
             ?>
             <!-- Main -->
             <main>
+
+                <!-- Filter -->
+                <div class="filter">
+                    <label for="filter-author">Filter for author:</label>
+                    <select id="filter-author" @change='setAuthor'>
+                        <option value="all">All</option>
+                        <option v-for="disc in discs" :value="`${disc.author}`">
+                            {{disc.author}}
+                        </option>
+                    </select>
+                </div>
+
                 <div class="container">
                     <!-- Stampa dischi con php -->
                     <ul class="disc">

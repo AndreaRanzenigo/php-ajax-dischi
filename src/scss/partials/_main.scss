@@ -2,6 +2,21 @@
 main {
     background-color: $bg-main;
     margin-top: 80px;
+    .filter {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        label {
+            color: $white;
+            font-weight: 700;
+        }
+    }
+    #filter-author {
+        padding: 5px;
+        margin: 20px;
+        text-align: center;
+    }
     .container {
         width: 1170px;
         margin: auto;

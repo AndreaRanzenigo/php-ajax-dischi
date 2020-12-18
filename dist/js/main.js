@@ -14437,6 +14437,21 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       // handle error
       console.log(error);
     });
+  },
+  methods: {
+    setAuthor: function setAuthor() {
+      var _this2 = this;
+
+      if (this.discs.includes) axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost/boolean-php/php-ajax-dischi/script/filter-author.php').then(function (response) {
+        // handle success
+        //console.log(response);
+        _this2.discs = [];
+        _this2.discs = response.data;
+      })["catch"](function (error) {
+        // handle error
+        console.log(error);
+      });
+    }
   }
 });
 
