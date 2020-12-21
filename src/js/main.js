@@ -5,52 +5,43 @@ import axios from 'axios';
 const app = new Vue({
     el: '#app',
     data: {
-        discs: [],
-        key: ''
+        albums: [],
+        artists: [],
+        key: 'all'
     },
     created() {
-        axios.get('http://localhost/boolean-php/php-ajax-dischi/script/json-database.php')
+        axios.get('http://localhost/boolean-php/php-ajax-dischi/script/get-album.php')
         .then( response => {
         // handle success
         //console.log(response);
-        this.discs = response.data;
+        // this.discs = response.data;
+        this.albums = response.data.albums;
+        this.artists = response.data.artists;
         })
         .catch( error => {
         // handle error
         console.log(error);
-  })
-  console.log(this.key);
+    });
     },
     methods: {
-        setAuthor(value) {
-            if(this.key === 'all') {
-                axios.get('http://localhost/boolean-php/php-ajax-dischi/script/json-database.php')
-                .then( response => {
-                    // handle success
-                    //console.log(response);
-                    this.discs = [];
-                    this.discs = response.data;
-                    console.log(value);
-                    })
-                    .catch( error => {
-                    // handle error
-                    console.log(error);
-           })
-            }
-            else if(this.key=== 'Bon Jovi') {
-                axios.get('http://localhost/boolean-php/php-ajax-dischi/script/filter-author.php')
-                .then( response => {
-                    // handle success
-                    //console.log(response);
-                    this.discs = [];
-                    this.discs = response.data;
-                    console.log(value);
-                    })
-                    .catch( error => {
-                    // handle error
-                    console.log(error);
-           })
-            }
-    }
+        filter() {
+            axios.get('http://localhost/boolean-php/php-ajax-dischi/script/get-album.php', {
+
+                params: {
+                    artist: this.key
+                }
+            })
+        .then( response => {
+        // handle success
+        //console.log(response);
+        // this.discs = response.data;
+        this.albums = response.data.albums;
+        this.artists = response.data.artists;
+        })
+        .catch( error => {
+        // handle error
+        console.log(error);
+        })
+        }
 }
 });

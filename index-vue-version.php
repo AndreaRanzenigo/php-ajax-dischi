@@ -32,36 +32,44 @@
 
             <?php 
             require __DIR__ . '/partials/discs.php';
+            // require_once __DIR__ . '/script/get-album.php';
             ?>
+
             <!-- Main -->
             <main>
 
+                <!-- Filter -->
+                <!-- <div class="filter">
+                    <label for="filter-author">Filter for author:</label>
+                    <select v-model='key' id="filter-author" @change='setAuthor'>
+                        <option value="all">All</option>
+                        <option v-for="disc in discs" :value="`${disc.author}`">
+                            {{disc.author}}
+                        </option>
+                    </select>
+                </div> -->
+
+                <!-- Filter -->
+                <div class="filter">
+                    <label for="filter-author">Filter for author:</label>
+                    <select v-model='key' id="filter-author" @change="filter">
+                        <option value="all">All</option>
+                        <option v-for="artist in artists" :value="artist">
+                            {{artist}}
+                        </option>
+                    </select>
+                </div>
+
                 <div class="container">
-                    <!-- Stampa dischi con php -->
-                    <ul class="disc">
-                        <?php 
-                        foreach ($database as $key => $disc) { 
-                            // var_dump($disc);
-                            ?>
-                            <li>
-                            <img src="<?php echo $disc['poster'] ?>" alt="poster">
-                            <h2><?php echo $disc['title']; ?></h2>
-                            <h4><?php echo $disc['author'] ?></h4>
-                            <h3><?php echo $disc['year'] ?></h3>
-                            <h4><?php echo $disc['genre'] ?></h4>
-                            </li>
-                            
-                        <?php } ?>
-                    </ul>
                     
                     <!-- Stampa dischi con axios e vue -->
                     <ul class="disc">
-                        <li v-for='disc in discs'>
-                            <img :src="`${disc.poster}`" :alt="`${disc.title}`">
-                            <h2>{{ disc.title }}</h2>
-                            <h4>{{ disc.author }}</h4>
-                            <h3>{{ disc.year }}</h3>
-                            <h4>{{ disc.genre }}</h4>
+                        <li v-for='album in albums'>
+                            <img :src="`${album.poster}`" :alt="`${album.title}`">
+                            <h2>{{ album.title }}</h2>
+                            <h4>{{ album.author }}</h4>
+                            <h3>{{ album.year }}</h3>
+                            <h4>{{ album.genre }}</h4>
                         </li>
                     </ul>
 
